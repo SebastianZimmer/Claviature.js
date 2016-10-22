@@ -95,7 +95,8 @@
 			container_id: config.container_id || document.body,
 			labels: config.labels || false,
 			id: config.id || "keyboard",
-			className: config.className || "keyboard"
+			className: config.className || "keyboard",
+			custom_key_names: config.custom_key_names || null
 		};		
 		
 		my.renderKeyboard();
@@ -137,8 +138,15 @@
 	
 	
 	my.createKey = function(key, left, parent){
-	
-		var key_text = my.key_names[(key + 9) % 12]; // + octave;
+		
+		if (my.config.custom_key_names){
+			var key_text = my.config.custom_key_names[key];
+		}
+		
+		else {
+			key_text = my.key_names[(key + 9) % 12]; // + octave;
+		}
+		
 		var key_color = my.key_colors[(key + 9) % 12];
 		var octave = Math.floor((key + 9) / 12);
 
