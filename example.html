@@ -22,14 +22,14 @@
 		<script>
 		
 			CLAVIATURE.create({
-				container_id: "piano_container",
-				labels: true,
-				onactivate: function(key, note){
+				containerID: "piano_container",
+				showLabels: true,
+				onActivate: function(key, note){
 				
 					document.getElementById("active_note").innerHTML = note;
 				
 				},
-				ondeactivate: function(){
+				onDeactivate: function(){
 				
 					document.getElementById("active_note").innerHTML = "";
 				

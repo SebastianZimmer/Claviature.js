@@ -1,4 +1,20 @@
-﻿CLAVIATURE = (function () {
+﻿/*
+   Copyright 2016 Sebastian Zimmer
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+
+CLAVIATURE = (function () {
 	'use strict';
 	
 	
@@ -76,7 +92,7 @@
 		"G",
 		"G#",
 		"A",
-		"A#",
+		"Bb",
 		"B"
 	];
 	
@@ -84,19 +100,19 @@
 	my.create = function(config){
 	
 		my.config = {
-			start: config.start_key || 0,
-			end: config.end_key || 88,
-			onmousedown: config.onmousedown || function(){ return; },
-			onclick: config.onclick || function(){ return; },
-			onmouseup: config.onmouseup || function(){ return; },
-			onmouseleave: config.onmouseleave || function(){ return; },
-			onactivate: config.onactivate || function(){ return; },
-			ondeactivate: config.ondeactivate || function(){ return; },
-			container_id: config.container_id || document.body,
-			labels: config.labels || false,
+			//startKey: config.startKey || 0,
+			//endKey: config.endKey || 88,
+			onMouseDown: config.onMouseDown || function(){ return; },
+			onClick: config.onClick || function(){ return; },
+			onMouseUp: config.onMouseUp || function(){ return; },
+			onMouseLeave: config.onMouseLeave || function(){ return; },
+			onActivate: config.onActivate || function(){ return; },
+			onDeactivate: config.onDeactivate || function(){ return; },
+			containerID: config.containerID || document.body,
+			showLabels: config.showLabels || false,
 			id: config.id || "keyboard",
 			className: config.className || "keyboard",
-			custom_key_names: config.custom_key_names || null
+			customKeyNames: config.customKeyNames || null
 		};		
 		
 		my.renderKeyboard();
@@ -108,17 +124,20 @@
 	
 		var k = 0;
 		
-		var keyboard = makeDiv(g(my.config.container_id), my.config.id, my.config.className);
+		var keyboard = makeDiv(g(my.config.containerID), my.config.id, my.config.className);
 		
 		var o0 = makeDiv(keyboard, "o0", "octave");
 		o0.style.left = octaveLeft + "px";
 		
+		//create the 3 keys of octave 0
 		my.createKey(0, 0, o0);
 		my.createKey(1, 14, o0);
 		my.createKey(2, 20, o0);
 		
-		var octaveLeft=40;
+		//position
+		var octaveLeft = 40;
 		
+		//key index
 		k = 3;
 		
 		for (var o = 1; o < 8; o++){
@@ -139,8 +158,8 @@
 	
 	my.createKey = function(key, left, parent){
 		
-		if (my.config.custom_key_names){
-			var key_text = my.config.custom_key_names[key];
+		if (my.config.customKeyNames){
+			var key_text = my.config.customKeyNames[key];
 		}
 		
 		else {
@@ -151,13 +170,14 @@
 		var octave = Math.floor((key + 9) / 12);
 
 		var button = makeElement("button", "b" + key, "key " + key_color + "key", parent);
-		button.addEventListener("mousedown", function() { my.config.onmousedown(key); my.activateKey(key, key_text); });
-		button.addEventListener("mouseup", function() { my.config.onmouseup(key);  my.deactivateKey(key, key_text); });
-		button.addEventListener("mouseout", function() { my.config.onmouseleave(key);  my.deactivateKey(key, key_text); });	
+		button.addEventListener("mousedown", function() { my.config.onMouseDown(key); my.activateKey(key, key_text); });
+		button.addEventListener("mouseup", function() { my.config.onMouseUp(key);  my.deactivateKey(key, key_text); });
+		button.addEventListener("mouseout", function() { my.config.onMouseLeave(key);  my.deactivateKey(key, key_text); });
+		button.addEventListener("click", function() { my.config.onClick(key); });
 		
 		button.style.left = left + "px";
 		
-		if (my.config.labels) {
+		if (my.config.showLabels) {
 		
 			var label = makeElement("span", "", "key_label", button);
 			label.innerHTML = key_text;
@@ -173,7 +193,7 @@
 	
 		g("b" + (key)).classList.add("active");
 		
-		my.config.onactivate(key, note);
+		my.config.onActivate(key, note);
 		
 	};
 	
@@ -186,7 +206,7 @@
 
 		g("b" + (key)).classList.remove("active");
 		
-		my.config.ondeactivate(key, note);
+		my.config.onDeactivate(key, note);
 		
 	};
 
