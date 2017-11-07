@@ -5,8 +5,8 @@
 		<meta http-equiv="X-UA-Compatible" content="chrome=1" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>ClaviatureJS Example</title>
-	  
-		<link rel="stylesheet" type="text/css" href="keyboard.css">    
+
+		<link rel="stylesheet" type="text/css" href="keyboard.css">
 	</head>
 
 	<body id="body">
@@ -15,27 +15,27 @@
 
 		<div id="piano_container"></div>
 		<div><p id="active_note" style="text-align: center; font-size: 26pt;"></p></div>
-		
-		
+
+
 		<script src="claviature.js"></script>
-		
+
 		<script>
-		
+
 			CLAVIATURE.create({
-				containerID: "piano_container",
+				labels: true,
+				container_id: "piano_container",
 				showLabels: true,
-				onActivate: function(key, note){
-				
+				onactivate: function(key, note){
 					document.getElementById("active_note").innerHTML = note;
-				
 				},
-				onDeactivate: function(){
-				
+				ondeactivate: function(){
 					document.getElementById("active_note").innerHTML = "";
-				
-				}
+				},
+				start: 27,
+				end: 75,
+				zoom: 150
 			});
-		
+
 		</script>
 
 
