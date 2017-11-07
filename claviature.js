@@ -148,7 +148,7 @@ CLAVIATURE = (function () {
 		button.addEventListener("mouseout", getMouseOutFunction(k, key_text));
 		button.style.left = offset + "px";
 
-		if (config.labels) {
+		if (config.showLabels) {
 			var label = makeElement("span", "", "key_label", button);
 			label.innerHTML = key_text;
 		}
@@ -223,7 +223,7 @@ CLAVIATURE = (function () {
 			onactivate: user_config.onactivate || function(){ return; },
 			ondeactivate: user_config.ondeactivate || function(){ return; },
 			container_id: user_config.container_id || document.body,
-			labels: user_config.labels || false,
+			showLabels: user_config.showLabels || false,
 			id: user_config.id || "keyboard",
 			className: user_config.className || "keyboard",
 			custom_key_names: user_config.custom_key_names || null,
