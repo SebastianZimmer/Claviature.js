@@ -36,7 +36,7 @@ CLAVIATURE.create({
 });
 ```
 
-## 🔧 Options
+## 🔧 API
 
 ### .create(options)
 
