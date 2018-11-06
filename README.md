@@ -51,6 +51,7 @@ The id of the container element.
 #### showLabels
 
 Type: `boolean`
+
 Default: `false`
 
 Render key labels. By default, these are the note names of the keys.
@@ -70,6 +71,7 @@ Callback that is fired when a key is activated.
 #### start
 
 Type: `number`
+
 Default: `0`
 
 The first key to render. Minimum is `0`.
@@ -77,6 +79,7 @@ The first key to render. Minimum is `0`.
 #### end
 
 Type: `number`
+
 Default: `87`
 
 The last key to render. Maximum is `87`.
@@ -84,6 +87,7 @@ The last key to render. Maximum is `87`.
 #### zoom
 
 Type: `number`
+
 Default: `120`
 
 How big the keyboard will be.
