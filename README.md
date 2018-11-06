@@ -22,7 +22,7 @@ create a musical keyboard on your web page.
 
 ```
 CLAVIATURE.create({
-  container_id: "piano_container",
+  container_id: "piano-container",
   showLabels: true,
   onactivate: function(key, note){
     console.log("Key down: " + note);
