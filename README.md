@@ -1,6 +1,6 @@
 # 🎹🎹🎹 Claviature.js 🎹🎹🎹
 
-Hello dear friend of the web! with this JavaScript library, you can easily
+Hey there! With this JavaScript library, you can easily
 create a musical keyboard on your web page.
 
 ## 🎉 Awesome! How does it work?
@@ -48,40 +48,42 @@ Type: `string`
 
 The id of the container element.
 
-### showLabels
+#### showLabels
 
 Type: `boolean`
 Default: `false`
 
 Render key labels. By default, these are the note names of the keys.
 
-### onactivate
+#### onactivate
 
 Type: `function`
 
 Callback that is fired when a key is activated.
 
-### ondeactivate
+#### ondeactivate
 
 Type: `function`
 
 Callback that is fired when a key is activated.
 
-### start
+#### start
 
 Type: `number`
+Default: `0`
 
-The first key to render.
+The first key to render. Minimum is `0`.
 
-### end
-
-Type: `number`
-
-The last key to render.
-
-### zoom
+#### end
 
 Type: `number`
-Default: `100`
+Default: `87`
+
+The last key to render. Maximum is `87`.
+
+#### zoom
+
+Type: `number`
+Default: `120`
 
 How big the keyboard will be.
